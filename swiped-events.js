@@ -10,6 +10,7 @@
     e.addEventListener(
       "touchstart",
       function (t) {
+        t.preventDefault();
         if ("true" === t.target.getAttribute("data-swipe-ignore")) return;
         (s = t.target),
           (r = Date.now()),
@@ -23,6 +24,7 @@
     e.addEventListener(
       "touchmove",
       function (t) {
+        t.preventDefault();
         if (!n || !a) return;
         var e = t.touches[0].clientX,
           r = t.touches[0].clientY;
@@ -33,6 +35,7 @@
     e.addEventListener(
       "touchend",
       function (t) {
+        t.preventDefault();
         if (s !== t.target) return;
         var e = parseInt(l(s, "data-swipe-threshold", "20"), 10),
           o = parseInt(l(s, "data-swipe-timeout", "500"), 10),
