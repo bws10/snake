@@ -37,14 +37,15 @@ function draw() {
   drawScore(gameBoard);
 }
 
-function syncHeight() {
-  document.documentElement.style.setProperty(
-    "--window-inner-height",
-    `${window.innerHeight}px`
-  );
-}
+// function syncHeight() {
 
-window.addEventListener("resize", syncHeight);
+// }
+document.documentElement.style.setProperty(
+  "--window-inner-height",
+  `${window.innerHeight}px`
+);
+
+// window.addEventListener("resize", syncHeight);
 
 // helper function to run preventDefault
 function preventDefault(e) {
