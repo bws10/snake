@@ -1,0 +1,8 @@
+export const settings = {
+  GRID_SIZE: 21,
+  EXPANSION_RATE: 1,
+  SPEED_INCREASE_INTERVAL: 10,
+  SPEED_INCREASE_RATE: 1,
+  SNAKE_SPEED: 5,
+  FOOD_SPAWN_RATE: 3,
+};
