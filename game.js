@@ -36,3 +36,20 @@ function draw() {
   drawFood(gameBoard);
   drawScore(gameBoard);
 }
+
+function syncHeight() {
+  document.documentElement.style.setProperty(
+    "--window-inner-height",
+    `${window.innerHeight}px`
+  );
+}
+
+window.addEventListener("resize", syncHeight);
+
+// helper function to run preventDefault
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+window.addEventListener("pointermove", preventDefault);
+window.addEventListener("touchmove", preventDefault);

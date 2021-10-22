@@ -1,13 +1,24 @@
+html.no-scroll,
+html.no-scroll body {
+  /* want to fix the height to the window height */
+  height: calc(var(--window-inner-height) - 1px);
+
+  /* want to block all overflowing content */
+  overflow: hidden;
+
+  /* want to exclude padding from the height */
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   width: 100vw;
-  height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: black;
   margin: 0;
-  overflow: hidden;
 }
 
 .game-board {
