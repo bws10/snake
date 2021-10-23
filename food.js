@@ -2,11 +2,12 @@ import { onSnake, expandSnake } from "./snake.js";
 import { getRandomGridPosition } from "./grid.js";
 import { updateScore } from "./score.js";
 import { settings } from "./settings.js";
+import { onWall } from "./walls.js";
 
 const EXPANSION_RATE = settings.EXPANSION_RATE;
 const FOOD_SPAWN_RATE = settings.FOOD_SPAWN_RATE;
 var food = getRandomFoodPosition(FOOD_SPAWN_RATE);
-console.log(food);
+
 export function update() {
   food.forEach((item) => {
     if (onSnake(item)) {
@@ -14,7 +15,6 @@ export function update() {
       updateScore(EXPANSION_RATE);
       let i = food.indexOf(item);
       delete food[i];
-      console.log(food);
     }
   });
   let withoutSparse = [];
@@ -23,7 +23,6 @@ export function update() {
   });
   if (withoutSparse.length == 0) {
     food = getRandomFoodPosition(FOOD_SPAWN_RATE);
-    console.log(food);
   }
 }
 
@@ -37,8 +36,6 @@ export function draw(gameBoard) {
       gameBoard.appendChild(foodElement);
     }
   });
-
-  //   console.log("draw food");
 }
 
 function getRandomFoodPosition(number) {
@@ -46,7 +43,7 @@ function getRandomFoodPosition(number) {
   for (let i = 0; i < number; i++) {
     let newPosition;
 
-    while (newPosition == null || onSnake(newPosition)) {
+    while (newPosition == null || onSnake(newPosition) || onWall(newPosition)) {
       newPosition = getRandomGridPosition();
     }
     newPositions.push(newPosition);
