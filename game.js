@@ -68,8 +68,8 @@ function preventDefault(e) {
   e.preventDefault();
 }
 
-window.addEventListener("pointermove", preventDefault);
-window.addEventListener("touchmove", preventDefault);
+// window.addEventListener("pointermove", preventDefault);
+// window.addEventListener("touchmove", preventDefault);
 
 const wallInput = document.getElementById("wallSet");
 
