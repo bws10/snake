@@ -58,3 +58,9 @@ body {
   border: 0.25vmin solid black;
   z-index: 3;
 }
+
+#wallSet {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}

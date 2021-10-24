@@ -5,9 +5,10 @@ import {
 } from "./snake.js";
 
 import { update as updateFood, draw as drawFood } from "./food.js";
-import { upadte as updateWalls, draw as drawWalls } from "./walls.js";
+import { upadte as updateWalls, draw as drawWalls, init } from "./walls.js";
 import { setGridSize } from "./grid.js";
 import { drawScore } from "./score.js";
+import { settings } from "./settings.js";
 
 let lastRenderTime = 0;
 let run = true;
@@ -69,3 +70,17 @@ function preventDefault(e) {
 
 window.addEventListener("pointermove", preventDefault);
 window.addEventListener("touchmove", preventDefault);
+
+const wallInput = document.getElementById("wallSet");
+
+wallInput.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let val = document.getElementById("wallSetTxt").value;
+  updateWallSet(val);
+});
+
+function updateWallSet(value) {
+  settings.WALL_SET = value;
+  init();
+}

@@ -4,14 +4,29 @@ import { onSnake, positionsEqual } from "./snake.js";
 import { getScore } from "./score.js";
 import { reset, stop } from "./game.js";
 
-const WALL_SET = settings.WALL_SET;
-
-let numberOfWalls = 0;
-let wallSet;
 let walls = [];
+var WALL_SET;
 
 const WALL_OPTIONS = {
   set1: {
+    wall1: {
+      start: { x: 1, y: 1 },
+      end: { x: 1, y: GRID_SIZE },
+    },
+    wall2: {
+      start: { x: 1, y: 1 },
+      end: { x: GRID_SIZE, y: 1 },
+    },
+    wall3: {
+      start: { x: GRID_SIZE, y: 1 },
+      end: { x: GRID_SIZE, y: GRID_SIZE },
+    },
+    wall4: {
+      start: { x: 1, y: GRID_SIZE },
+      end: { x: GRID_SIZE, y: GRID_SIZE },
+    },
+  },
+  set2: {
     wall1: {
       start: { x: 5, y: 5 },
       end: { x: 5, y: GRID_SIZE - 5 },
@@ -23,17 +38,27 @@ const WALL_OPTIONS = {
   },
 };
 
-let set = "set" + WALL_SET;
-wallSet = WALL_OPTIONS[set];
-numberOfWalls = Object.keys(wallSet).length;
+init();
 
-for (let i = 1; i <= numberOfWalls; i++) {
-  let key = "wall" + i;
-  let wall = wallSet[key];
-  let wallArray = buildWallArray(wall.start, wall.end);
-  walls = [...walls, ...wallArray];
+export function init() {
+  WALL_SET = settings.WALL_SET;
+  walls = [];
+  if (WALL_SET <= 0 || WALL_SET > Object.keys(WALL_OPTIONS).length) return;
+
+  let numberOfWalls = 0;
+  let wallSet;
+
+  let set = "set" + WALL_SET;
+  wallSet = WALL_OPTIONS[set];
+  numberOfWalls = Object.keys(wallSet).length;
+
+  for (let i = 1; i <= numberOfWalls; i++) {
+    let key = "wall" + i;
+    let wall = wallSet[key];
+    let wallArray = buildWallArray(wall.start, wall.end);
+    walls = [...walls, ...wallArray];
+  }
 }
-
 export function upadte() {
   if (WALL_SET == 0) return;
   walls.forEach((block) => {
