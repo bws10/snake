@@ -68,8 +68,8 @@ function preventDefault(e) {
   e.preventDefault();
 }
 
-// window.addEventListener("pointermove", preventDefault);
-// window.addEventListener("touchmove", preventDefault);
+window.addEventListener("pointermove", preventDefault);
+window.addEventListener("touchmove", preventDefault);
 
 const wallInput = document.getElementById("wallSet");
 
@@ -78,6 +78,15 @@ wallInput.addEventListener("submit", (e) => {
 
   let val = document.getElementById("wallSetTxt").value;
   updateWallSet(val);
+  window.addEventListener("pointermove", preventDefault);
+  window.addEventListener("touchmove", preventDefault);
+});
+
+const wallInputTxt = document.getElementById("wallSetTxt");
+
+wallInputTxt.addEventListener("click", (e) => {
+  window.removeEventListener("pointermove", preventDefault);
+  window.removeEventListener("touchmove", preventDefault);
 });
 
 function updateWallSet(value) {
