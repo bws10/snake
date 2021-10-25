@@ -8,7 +8,7 @@ import { update as updateFood, draw as drawFood } from "./food.js";
 import { upadte as updateWalls, draw as drawWalls, init } from "./walls.js";
 import { setGridSize } from "./grid.js";
 import { drawScore } from "./score.js";
-import { settings } from "./settings.js";
+import { settings, STORED_SETTINGS_KEY } from "./settings.js";
 
 let lastRenderTime = 0;
 let run = true;
@@ -78,6 +78,8 @@ wallInput.addEventListener("submit", (e) => {
 
   let val = document.getElementById("wallSetTxt").value;
   updateWallSet(val);
+  settings.WALL_SET = val;
+  localStorage.setItem(STORED_SETTINGS_KEY, JSON.stringify(settings));
   window.addEventListener("pointermove", preventDefault);
   window.addEventListener("touchmove", preventDefault);
 });

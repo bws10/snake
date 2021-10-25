@@ -41,8 +41,12 @@ export function draw(gameBoard) {
     snakeElement.style.gridColumnStart = segment.x;
     snakeElement.style.gridRowStart = segment.y;
     snakeElement.classList.add("snake");
+    if (segment == snakeBody[0]) {
+      snakeElement.classList.add("snakeHead");
+    }
     gameBoard.appendChild(snakeElement);
   });
+
   // console.log("draw snake");
 }
 
