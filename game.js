@@ -24,6 +24,8 @@ const gameBoard = document.querySelector(".game-board");
 
 function main(currentTime) {
   if (!run) {
+    updateWalls();
+    drawWalls(gameBoard);
     return;
   }
 
@@ -124,9 +126,8 @@ wallInputTxt.addEventListener("change", (e) => {
 function updateWallSet(value) {
   settings.WALL_SET = value;
   init();
+
   newFoodAfterWallChange();
-  updateWalls();
-  drawWalls(gameBoard);
 }
 
 window.addEventListener("keydown", (e) => {
