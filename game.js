@@ -2,6 +2,9 @@ import {
   update as updateSnake,
   draw as drawSnake,
   SNAKE_SPEED,
+  resetSpeed,
+  resetSnake,
+  resetSegments,
 } from "./snake.js";
 
 import {
@@ -11,8 +14,9 @@ import {
 } from "./food.js";
 import { upadte as updateWalls, draw as drawWalls, init } from "./walls.js";
 import { setGridSize } from "./grid.js";
-import { drawScore } from "./score.js";
+import { drawScore, resetScore } from "./score.js";
 import { settings, STORED_SETTINGS_KEY } from "./settings.js";
+import { resetInput } from "./input.js";
 
 let lastRenderTime = 0;
 let run = true;
@@ -20,8 +24,6 @@ const gameBoard = document.querySelector(".game-board");
 
 function main(currentTime) {
   if (!run) {
-    updateWalls();
-    drawWalls(gameBoard);
     return;
   }
 
@@ -46,7 +48,17 @@ export function stop() {
 }
 
 export function reset() {
-  location.reload();
+  run = false;
+  resetSpeed();
+  resetSnake();
+  resetSegments();
+  resetScore();
+  resetInput();
+  lastRenderTime = 0;
+  run = true;
+  newFoodAfterWallChange();
+  start();
+  // location.reload();
 }
 
 function update() {
@@ -103,7 +115,7 @@ wallInputTxt.addEventListener("change", (e) => {
 
   let val = document.getElementById("wallSetTxt").value;
   updateWallSet(val);
-  settings.WALL_SET = val;
+  // settings.WALL_SET = val;
   localStorage.setItem(STORED_SETTINGS_KEY, JSON.stringify(settings));
   window.addEventListener("pointermove", preventDefault);
   window.addEventListener("touchmove", preventDefault);
@@ -113,6 +125,8 @@ function updateWallSet(value) {
   settings.WALL_SET = value;
   init();
   newFoodAfterWallChange();
+  updateWalls();
+  drawWalls(gameBoard);
 }
 
 window.addEventListener("keydown", (e) => {

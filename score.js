@@ -7,6 +7,12 @@ let score = 0;
 let lastSpeedIncrease = 0;
 let scoreString = score.toString();
 
+export function resetScore() {
+  score = 0;
+  lastSpeedIncrease = 0;
+  scoreString = score.toString();
+}
+
 export function updateScore(amount) {
   score += amount;
   scoreString = " " + score.toString(10) + " ";

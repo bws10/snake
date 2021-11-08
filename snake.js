@@ -2,11 +2,23 @@ import { getInputDirection } from "./input.js";
 import { GRID_SIZE } from "./grid.js";
 import { settings } from "./settings.js";
 import { getScore } from "./score.js";
+import { reset, stop } from "./game.js";
 
-export var SNAKE_SPEED = settings.SNAKE_SPEED;
-const snakeBody = [{ x: (GRID_SIZE - 1) / 2 + 1, y: (GRID_SIZE - 1) / 2 + 1 }];
-let newSegments = 0;
-
+export var SNAKE_SPEED = 0;
+export var snakeBody = [];
+export var newSegments = 0;
+resetSpeed();
+export function resetSpeed() {
+  SNAKE_SPEED = settings.SNAKE_SPEED;
+}
+resetSegments();
+export function resetSegments() {
+  newSegments = 0;
+}
+resetSnake();
+export function resetSnake() {
+  snakeBody = [{ x: (GRID_SIZE - 1) / 2 + 1, y: (GRID_SIZE - 1) / 2 + 1 }];
+}
 export function update() {
   addSegments();
   const inputDirection = getInputDirection();
@@ -29,8 +41,9 @@ export function update() {
   }
   let snakeHead = snakeBody[0];
   if (hitTail(snakeHead)) {
+    stop();
     alert("Game Over ! You scored " + getScore());
-    location.reload();
+    reset();
   }
   // console.log("update snake");
 }
