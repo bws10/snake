@@ -50,3 +50,7 @@ function getRandomFoodPosition(number) {
   }
   return newPositions;
 }
+
+export function newFoodAfterWallChange() {
+  food = getRandomFoodPosition(FOOD_SPAWN_RATE);
+}

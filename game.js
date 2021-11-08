@@ -4,7 +4,11 @@ import {
   SNAKE_SPEED,
 } from "./snake.js";
 
-import { update as updateFood, draw as drawFood } from "./food.js";
+import {
+  update as updateFood,
+  draw as drawFood,
+  newFoodAfterWallChange,
+} from "./food.js";
 import { upadte as updateWalls, draw as drawWalls, init } from "./walls.js";
 import { setGridSize } from "./grid.js";
 import { drawScore } from "./score.js";
@@ -15,7 +19,12 @@ let run = true;
 const gameBoard = document.querySelector(".game-board");
 
 function main(currentTime) {
-  if (!run) return;
+  if (!run) {
+    updateWalls();
+    drawWalls(gameBoard);
+    return;
+  }
+
   const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
   window.requestAnimationFrame(main);
   if (secondsSinceLastRender < 1 / SNAKE_SPEED) return;
@@ -27,6 +36,7 @@ function main(currentTime) {
 
 setGridSize(gameBoard);
 start();
+
 function start() {
   window.requestAnimationFrame(main);
 }
@@ -53,15 +63,10 @@ function draw() {
   drawWalls(gameBoard);
 }
 
-// function syncHeight() {
-
-// }
 document.documentElement.style.setProperty(
   "--window-inner-height",
   `${window.innerHeight}px`
 );
-
-// window.addEventListener("resize", syncHeight);
 
 // helper function to run preventDefault
 function preventDefault(e) {
@@ -72,8 +77,28 @@ window.addEventListener("pointermove", preventDefault);
 window.addEventListener("touchmove", preventDefault);
 
 const wallInput = document.getElementById("wallSet");
+const wallInputTxt = document.getElementById("wallSetTxt");
+
+wallInputTxt.value = settings.WALL_SET;
 
 wallInput.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let val = document.getElementById("wallSetTxt").value;
+  updateWallSet(val);
+  settings.WALL_SET = val;
+
+  localStorage.setItem(STORED_SETTINGS_KEY, JSON.stringify(settings));
+  window.addEventListener("pointermove", preventDefault);
+  window.addEventListener("touchmove", preventDefault);
+});
+
+wallInputTxt.addEventListener("click", (e) => {
+  window.removeEventListener("pointermove", preventDefault);
+  window.removeEventListener("touchmove", preventDefault);
+});
+
+wallInputTxt.addEventListener("change", (e) => {
   e.preventDefault();
 
   let val = document.getElementById("wallSetTxt").value;
@@ -84,14 +109,15 @@ wallInput.addEventListener("submit", (e) => {
   window.addEventListener("touchmove", preventDefault);
 });
 
-const wallInputTxt = document.getElementById("wallSetTxt");
-
-wallInputTxt.addEventListener("click", (e) => {
-  window.removeEventListener("pointermove", preventDefault);
-  window.removeEventListener("touchmove", preventDefault);
-});
-
 function updateWallSet(value) {
   settings.WALL_SET = value;
   init();
+  newFoodAfterWallChange();
 }
+
+window.addEventListener("keydown", (e) => {
+  if (e.key == "p") {
+    run = !run;
+    start();
+  }
+});
