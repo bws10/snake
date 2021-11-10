@@ -29,26 +29,26 @@
       <span class="close">X</span>
       <div class="modal-container">
         <form id="settings">
-          <label for="startSpeed">Starting speed of snake (min: 1 max: 15)</label>
-          <input type="number" min="1" max="15" id="startSpeed" />
-          <label for="speedInt">After how many points does speed increase</label>
-          <input type="number" min="5" max="50" step="5" id="speedInt" />
-          <label for="speedInc">How much does snake speed up</br>(Min:0 (Snake never speeds up)  Max:5 (Snake speed increases by 5) </label>
-          <input type="number" min="0" max="5" step="1" id="speedInc" />
-          <label for="growth">How quickly does snake grow when food is eaten</br>(min: 1 max: 5)</label>
-          <input type="number" min="1" max="5" step="1" id="growth" />
-          <label for="food">How much new food spawns once all collected</br>(min: 1 max: 5)</label>
-          <input type="number" min="1" max="5" step="1" id="food" />
+          <label class="settings-item" for="startSpeed">Starting speed of snake (min: 1 max: 15)</label>
+          <input class="settings-item" type="number" min="1" max="15" id="startSpeed" />
+          <label  class="settings-item" for="speedInt">After how many points does speed increase</label>
+          <input  class="settings-item" type="number" min="5" max="50" step="5" id="speedInt" />
+          <label  class="settings-item" for="speedInc">How much does snake speed up</br>(Min:0 (Snake never speeds up)  Max:5 (Snake speed increases by 5) </label>
+          <input  class="settings-item" type="number" min="0" max="5" step="1" id="speedInc" />
+          <label  class="settings-item" for="growth">How quickly does snake grow when food is eaten</br>(min: 1 max: 5)</label>
+          <input  class="settings-item" type="number" min="1" max="5" step="1" id="growth" />
+          <label  class="settings-item" for="food">How much new food spawns once all collected</br>(min: 1 max: 5)</label>
+          <input  class="settings-item" type="number" min="1" max="5" step="1" id="food" />
           
           
-          <label for="wallSetTxt">Wall Set Number</label>
-          <select class="opt" id="wallSetTxt">
+          <label  class="settings-item"  for="wallSetTxt">Wall Set Number</label>
+          <select class="opt settings-item" id="wallSetTxt">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
           </select>
-          <input id="default-btn" type="button" value="Default Settings" />
-          <input id="close-btn" type="button" value="Close Settings" />
+          <input class="frm_Btn settings-item" id="default-btn" type="button" value="Default Settings" />
+          <input class="frm_Btn settings-item" id="close-btn" type="button" value="Close Settings" />
         </form>
       </div>
     </div>
