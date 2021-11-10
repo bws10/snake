@@ -252,7 +252,7 @@ function pause() {
 const modal = document.querySelector(".settings-modal");
 const pauseBtn = document.querySelector("#pause-btn");
 const settingsBtn = document.querySelector("#settings-btn");
-const closeBtn = document.querySelector("#close-btn");
+// const closeBtn = document.querySelector("#close-btn");
 const resetBtn = document.querySelector("#reset-btn");
 const defaultBtn = document.querySelector("#default-btn");
 const close = document.querySelector(".close");
@@ -268,14 +268,13 @@ pauseBtn.addEventListener("click", (e) => {
 });
 
 close.addEventListener("click", (e) => {
-  e.preventDefault();
   hideModal();
 });
 
-closeBtn.addEventListener("click", (e) => {
-  // e.preventDefault();
-  hideModal();
-});
+// closeBtn.addEventListener("click", (e) => {
+
+//   hideModal();
+// });
 
 defaultBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -322,5 +321,8 @@ window.addEventListener("click", (e) => {
     e.preventDefault();
     reset();
     hideGameOverModal();
+  }
+  if (e.target == modal) {
+    hideModal();
   }
 });

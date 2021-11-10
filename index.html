@@ -29,26 +29,79 @@
       <span class="close">X</span>
       <div class="modal-container">
         <form id="settings">
-          <label class="settings-item" for="startSpeed">Starting speed of snake (min: 1 max: 15)</label>
-          <input class="settings-item" type="number" min="1" max="15" id="startSpeed" />
+          <label class="settings-item" for="startSpeed">Starting speed of snake (min: 1 max: 10)</label>
+          <div class="select-container settings-item">
+            <select  id="startSpeed" >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              </select>
+          </div>
           <label  class="settings-item" for="speedInt">After how many points does speed increase</label>
-          <input  class="settings-item" type="number" min="5" max="50" step="5" id="speedInt" />
+          <div class="select-container settings-item ">
+            <select   id="speedInt" >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+              <option value="35">35</option>
+              <option value="40">40</option>
+              <option value="45">45</option>
+              <option value="50">50</option>
+             </select>
+          </div>
           <label  class="settings-item" for="speedInc">How much does snake speed up</br>(Min:0 (Snake never speeds up)  Max:5 (Snake speed increases by 5) </label>
-          <input  class="settings-item" type="number" min="0" max="5" step="1" id="speedInc" />
+          <div class="select-container settings-item">
+            <select   id="speedInc" >
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              </select>
+          </div>
           <label  class="settings-item" for="growth">How quickly does snake grow when food is eaten</br>(min: 1 max: 5)</label>
-          <input  class="settings-item" type="number" min="1" max="5" step="1" id="growth" />
+          <div class="select-container settings-item">
+            <select   id="growth" >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              </select>
+          </div>
           <label  class="settings-item" for="food">How much new food spawns once all collected</br>(min: 1 max: 5)</label>
-          <input  class="settings-item" type="number" min="1" max="5" step="1" id="food" />
+          <div class="select-container settings-item">
+            <select   id="food" >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              </select>
+          </div>
           
           
           <label  class="settings-item"  for="wallSetTxt">Wall Set Number</label>
-          <select class="opt settings-item" id="wallSetTxt">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select>
-          <input class="frm_Btn settings-item" id="default-btn" type="button" value="Default Settings" />
-          <input class="frm_Btn settings-item" id="close-btn" type="button" value="Close Settings" />
+          <div class="select-container settings-item">
+            <select  id="wallSetTxt">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <input class="frm_Btn " id="default-btn" type="button" value="Default Settings" />
+          <!-- <input class="frm_Btn settings-item" id="close-btn" type="button" value="Close Settings" /> -->
         </form>
       </div>
     </div>
