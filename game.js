@@ -316,3 +316,11 @@ export function gameOver(score) {
 function hideGameOverModal() {
   gameOverModal.style.visibility = "hidden";
 }
+
+window.addEventListener("click", (e) => {
+  if (e.target == gameOverModal) {
+    e.preventDefault();
+    reset();
+    hideGameOverModal();
+  }
+});
