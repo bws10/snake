@@ -181,3 +181,15 @@ body {
   justify-self: center;
   align-self: center;
 }
+
+.joystick {
+  /* border: 1px solid blue; */
+  width: 128px;
+  position: relative;
+}
+
+#stick1 {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+}
