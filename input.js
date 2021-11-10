@@ -176,7 +176,7 @@ function updateJoystick() {
     inputDirection = { x: -1, y: 0 };
     return;
   }
-  if (x > 0.5 && x > y) {
+  if (x > 0.3 && x > y) {
     console.log("right");
 
     if (lastInputDirection.x !== 0) return;
@@ -184,14 +184,14 @@ function updateJoystick() {
     return;
   }
 
-  if (y < -0.5 && y < x) {
+  if (y < -0.3 && y < x) {
     console.log("up");
 
     if (lastInputDirection.y !== 0) return;
     inputDirection = { x: 0, y: -1 };
     return;
   }
-  if (x > 0.5 && y > x) {
+  if (y > 0.3 && y > x) {
     console.log("down");
     if (lastInputDirection.y !== 0) return;
     inputDirection = { x: 0, y: 1 };
