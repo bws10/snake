@@ -52,7 +52,7 @@ body {
 .snakeHead {
   background-color: hsl(184, 98%, 45%);
   border: 0.25vmin solid black;
-  z-index: 3;
+  z-index: 4;
 }
 
 .food {
@@ -67,8 +67,77 @@ body {
   z-index: 1;
 }
 
-#wallSet {
+#settings {
   color: white;
   display: flex;
   flex-direction: column;
+}
+
+.gameOver-modal {
+  background: hsl(0, 0%, 0%, 0.8);
+  color: whitesmoke;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  display: flex;
+  visibility: hidden;
+  z-index: 99;
+  align-items: center;
+  justify-content: center;
+}
+.settings-modal {
+  background: hsl(0, 0%, 0%, 0.8);
+  color: whitesmoke;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  display: flex;
+  visibility: hidden;
+  z-index: 99;
+  align-items: center;
+  justify-content: center;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 2rem;
+  font-size: larger;
+  font-weight: bold;
+  color: rgb(177, 177, 177);
+  cursor: pointer;
+}
+.modal-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-container * {
+  padding: 0.5rem;
+  margin: 0.2rem;
+  font-weight: bold;
+  color: navy;
+}
+.modal-container label,
+.modal-container p {
+  color: whitesmoke;
+}
+.btn {
+  padding: 0.5rem;
+  margin: 0.2rem;
+}
+
+.opt {
+  text-align: center;
+}
+
+#default-btn {
+  margin-top: 2rem;
 }

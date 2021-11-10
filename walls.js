@@ -2,7 +2,7 @@ import { GRID_SIZE } from "./grid.js";
 import { settings } from "./settings.js";
 import { onSnake, positionsEqual } from "./snake.js";
 import { getScore } from "./score.js";
-import { reset, stop } from "./game.js";
+import { gameOver, stop } from "./game.js";
 
 let walls = [];
 var WALL_SET;
@@ -64,9 +64,8 @@ export function upadte() {
   walls.forEach((block) => {
     if (onSnake(block)) {
       stop();
-      alert("Game Over ! You scored " + getScore());
-      //   location.reload();
-      reset();
+      let score = getScore();
+      gameOver(score);
     }
   });
 }

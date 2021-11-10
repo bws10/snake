@@ -2,7 +2,7 @@ import { getInputDirection } from "./input.js";
 import { GRID_SIZE } from "./grid.js";
 import { settings } from "./settings.js";
 import { getScore } from "./score.js";
-import { reset, stop } from "./game.js";
+import { gameOver, reset, stop } from "./game.js";
 
 export var SNAKE_SPEED = 0;
 export var snakeBody = [];
@@ -42,8 +42,8 @@ export function update() {
   let snakeHead = snakeBody[0];
   if (hitTail(snakeHead)) {
     stop();
-    alert("Game Over ! You scored " + getScore());
-    reset();
+    let score = getScore();
+    gameOver(score);
   }
   // console.log("update snake");
 }

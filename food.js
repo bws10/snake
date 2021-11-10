@@ -4,9 +4,14 @@ import { updateScore } from "./score.js";
 import { settings } from "./settings.js";
 import { onWall } from "./walls.js";
 
-const EXPANSION_RATE = settings.EXPANSION_RATE;
-const FOOD_SPAWN_RATE = settings.FOOD_SPAWN_RATE;
+var EXPANSION_RATE = settings.EXPANSION_RATE;
+var FOOD_SPAWN_RATE = settings.FOOD_SPAWN_RATE;
 var food = getRandomFoodPosition(FOOD_SPAWN_RATE);
+
+export function resetFood() {
+  EXPANSION_RATE = settings.EXPANSION_RATE;
+  FOOD_SPAWN_RATE = settings.FOOD_SPAWN_RATE;
+}
 
 export function update() {
   food.forEach((item) => {
